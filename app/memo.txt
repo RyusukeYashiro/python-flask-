@@ -1,0 +1,14 @@
+# poetryでプロジェクト作成
+poetry new flask-project
+cd flask-project
+
+# 依存関係追加
+poetry add flask
+poetry add --group dev pytest python-dotenv
+
+# 仮想環境で実行(それがvscodeから仮想環境に入る)
+poetry shell  # 仮想環境に入る
+python app/main.py
+
+# または直接実行
+poetry run python app/main.py
