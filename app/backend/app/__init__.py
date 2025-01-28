@@ -9,7 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
 from flask_migrate import Migrate
 from flask_login import LoginManager
-
+from flask_cors import CORS
 
 class Base(DeclarativeBase):
     pass
@@ -17,7 +17,10 @@ class Base(DeclarativeBase):
 app = Flask(__name__)
 
 # corsの設定
-
+CORS(app , resources={r"/*": 
+                    {"origins": ["http://localhost:3000"], 
+                    "methods" : ['GET' , "POST" , "PUT" , "DELETE" , "PATCH"]
+                    , "allow_credentials" : True}})
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 # SQLAlchemyのイベントシステムを無効化します。
